@@ -1,0 +1,64 @@
+<html>
+<meta charset="utf-8">
+<head>
+    <title>web server first try</title>
+    <script type="text/javascript">
+    var str;
+    var num=new Array();
+    
+    function valid()
+    {
+        str=document.getElementById("InNumber").value;
+        if(str=="")
+        {
+            alert("你还没有输入数字");
+            return 2;
+        }
+        else
+        {
+            var tmp=/^\d[\s\d]*$/.test(str);
+            if(tmp==true)
+            {
+                return 1;
+            }
+            else
+            {
+                alert("你输入的格式有误");
+                return 0;
+            }
+        }
+
+    }
+
+    function sendmessage()
+    {
+        var a=valid();
+        if(a==2 || a==0) 
+            return false;
+        //说明有数字输入
+        else
+        {
+            document.getElementById("formid").submit();
+            return true;
+        }
+    }
+
+    function changepage()
+    {
+        location.href='/province';
+    }
+    </script>
+</head>
+
+<body>
+    <form action="/" method="post" id="formid" >
+    <input type="text"  name="InNumber" id="InNumber" align="center" style="height: 50px; width: 400px; font-size: 40px" placeholder="20 30 40 ..">
+    <br>
+    <input type="button" name="btn1" value="进行排序" align="center" onclick="sendmessage()">
+    <br>
+    </form>
+    <p>{{result}} </p>>
+    <input type="button" value="省市联动" align="center" onclick="changepage()">
+    </body>
+    
+</html>
